@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkbook_app"]=self["webpackChunkbook_app"]||[]).push([[443],{833:function(n,a,u){u.r(a),u.d(a,{default:function(){return b}});var t=u(6252);const e={class:"about"},o=(0,t._)("h1",null,"This is an about page",-1),r=[o];function s(n,a){return(0,t.wg)(),(0,t.iD)("div",e,r)}var c=u(3744);const i={},p=(0,c.Z)(i,[["render",s]]);var b=p}}]);
+//# sourceMappingURL=about.f27fa25a.js.map
