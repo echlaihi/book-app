@@ -2,31 +2,16 @@
 
     <section class="container mb-5"> <!-- create book section =============================================================-->
         <div class="row">
-<!-- 
+
+          <div class="col-md-6"  v-if="formShowen">
+            <BookForm @saveClicked="saveBook"/>
+          </div>
+
           <div class="col-md-6">
-             <form class="border p-4">
-                <h3>Add book</h3>
-                <fieldset class="form-group">
-                  <label class="d-block text-start mt-4 mb-2"><b>Title: </b></label>
-                  <input type="text" class="form-control" v-model="book.title">
-                </fieldset>
-
-                <fieldset>
-                  <label class="d-block text-start mt-4 mb-2"><b>Author: </b></label>
-                  <input type="text" class="form-control" v-model="book.author">
-                </fieldset>
-
-                <fieldset>
-                  <label class="d-block text-start mt-4 mb-2"><b>Description: </b></label>
-                  <input type="text" class="form-control" v-model="book.description">
-                </fieldset>
-
-                <fieldset class="form-group mt-4">
-                  <button class="form-control btn btn-primary" @click.prevent="saveBook">Save</button>
-                </fieldset>
-
-             </form>
-          </div> -->
+              <button class="btn btn-primary" @click="showForm">
+                {{ button }}
+              </button>
+          </div>
 
         </div>
     </section><!-- end create book section ==========================================================================-->
@@ -50,11 +35,14 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import BookCard from '@/components/BookCard.vue'
+import BookForm from '@/components/BookForm.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    BookCard
+    BookCard,
+    BookForm
+
     // HelloWorld
 
   },
@@ -81,7 +69,10 @@ export default {
         title: "",
         author: "",
         description: ""
-      }
+      },
+
+      formShowen: false,
+      button: "Create a book"
     }
   },
 
@@ -112,16 +103,21 @@ export default {
      
     },
 
-    saveBook: function(){
+
+    saveBook: function(book){
       var newBook = {
         id: this.books.length,
-        title: this.title,
-        author: this.author,
-        description: this.description
+        title: book.title,
+        author: book.author,
+        description: book.description
       }
 
-      // this.books.push(newBook)
-      console.log(newBook)
+      this.books.push(newBook)
+    },
+
+    showForm: function(){
+      this.formShowen = !this.formShowen
+      this.button == "Remove Form" ? this.button = "Create book" : this.button = "Remove Form"
     }
    
 
